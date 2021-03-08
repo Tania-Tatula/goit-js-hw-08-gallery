@@ -34,9 +34,10 @@ selectedByIdGalleryEl.addEventListener("click", onOpenBigImages);
 closeModalBtn.addEventListener("click", onCloseBigImages);
 overlayEl.addEventListener("click", onBackdropClick);
 
+
 function onOpenBigImages(evt) {
   window.addEventListener("keydown", onEscKeyPress);
-  window.addEventListener("keydown", onFlipsImage);
+  // window.addEventListener("keydown", onFlipsImage);
 
   evt.preventDefault();
 
@@ -56,7 +57,7 @@ function onOpenBigImages(evt) {
 
 function onCloseBigImages() {
   window.removeEventListener("keydown", onEscKeyPress);
-  window.removeEventListener("keydown", onFlipsImage);
+  // window.removeEventListener("keydown", onFlipsImage);
   openModal.classList.remove("is-open");
   imgOflitebox.alt = "";
   imgOflitebox.src = "";
@@ -74,35 +75,43 @@ function onEscKeyPress(evt) {
   if (evt.code === ESC_KEY_CODE) {
     onCloseBigImages();
   }
+
+ 
 }
 
-function onFlipsImage(evt) {
-  const IMAGE_FORWARD_CODE = "ArrowRight";
-  const IMAGE_BACK_CODE = "ArrowLeft";
-  console.log(evt);
 
-  if (evt.code === IMAGE_BACK_CODE) {
-    let backEl =
-      evt.target.parentNode.previousSibling.firstElementChild.firstElementChild;
-    const imgAlt = backEl.getAttribute("alt");
-    const imgBigSrc = backEl.dataset.source;
+// function onFlipsImage(evt){
+  
+//   let currentImg = evt.target.getAttribute("href");
+// const newIndex = images.findIndex(
+//     (imag, index) =>{
+//       if(currentImg === imag.original){
+       
+//         return index;
+//       }
+      
+//     })
+//     if (evt.code === "ArrowLeft") {
+//     const imgAlt = images[newIndex - 1].description;
+//     const imgBigSrc = images[newIndex - 1].original;
+    
 
-    imgOflitebox.alt = imgAlt;
-    imgOflitebox.src = imgBigSrc;
+//     imgOflitebox.alt = imgAlt;
+//     imgOflitebox.src = imgBigSrc;
+    
+      
+//     return;
+//     }
 
-    console.log(backEl);
-  }
-
-  if (evt.code === IMAGE_FORWARD_CODE) {
-    let backEl =
-      evt.target.parentNode.nextElementSibling.firstElementChild
-        .firstElementChild;
-
-    const imgAlt = backEl.getAttribute("alt");
-    const imgBigSrc = backEl.dataset.source;
-
-    imgOflitebox.alt = imgAlt;
-    imgOflitebox.src = imgBigSrc;
-    return backEl.parentNode;
-  }
-}
+//     if (evt.code === "ArrowRight") {
+//       const imgAlt = images[newIndex + 1].description;
+//       const imgBigSrc = images[newIndex + 1].original;
+      
+  
+//       imgOflitebox.alt = imgAlt;
+//       imgOflitebox.src = imgBigSrc;
+      
+        
+//       return;
+//       }
+// }
